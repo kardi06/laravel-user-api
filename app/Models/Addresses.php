@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Addresses extends Model
 {
-    protected $table = 'users';
+    protected $table = 'addresses';
     protected $primaryKey = 'id';
     protected $keyType = 'int';
     protected $timestamps = true;
     protected $incrementing = true;
 
-    public function contact() : HasMany 
+    public function contact(): BelongsTo
     {
-        return $this->hasMany(Contact::class,'user_id','id');
+        return $this->belongsTo(Contact::class, 'contact_id', 'id');
     }
 }
